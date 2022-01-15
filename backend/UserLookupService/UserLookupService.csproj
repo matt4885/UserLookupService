@@ -12,6 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
@@ -21,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UserLookupService.Abstractions\UserLookupService.Abstractions.csproj" />
+    <ProjectReference Include="..\UserLookupService.Data\UserLookupService.Data.csproj" />
   </ItemGroup>
 
 </Project>
