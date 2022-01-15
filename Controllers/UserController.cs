@@ -18,8 +18,6 @@ public class UserController : ControllerBase
     [HttpGet("")]
     public IActionResult Get()
     {
-        _logger.LogInformation("We hit our UserController");
         return Ok();
-
     }
 }
