@@ -26,26 +26,33 @@ namespace UserLookupService.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<string>("Address")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("address");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date_of_birth");
 
                     b.Property<string>("Email")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("email");
 
                     b.Property<string>("FamilyName")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("family_name");
 
                     b.Property<string>("GivenName")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("given_name");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_users");
 
-                    b.ToTable("Users");
+                    b.ToTable("users", (string)null);
                 });
 #pragma warning restore 612, 618
         }

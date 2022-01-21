@@ -8,14 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<MainContext>(o =>
-    o.UseNpgsql("Host=localhost;Database=users;Username=postgres;Password=password", 
-    b => b.MigrationsAssembly("UserLookupService.Data")));
+    o.UseNpgsql("Host=localhost;Database=users;Username=postgres;Password=password",
+        b => b.MigrationsAssembly("UserLookupService.Data"))
+    .UseSnakeCaseNamingConvention());
 
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserQuery, UserQueries>();
 builder.Services.AddScoped<GetUserUseCase>();
 
 var app = builder.Build();

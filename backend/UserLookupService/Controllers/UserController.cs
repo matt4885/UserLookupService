@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 using UserLookupService.Domains;
+using UserLookupService.Abstractions;
+using UserLookupService.Data;
 
 namespace UserLookupService.Controllers;
 
@@ -19,12 +20,22 @@ public class UserController : ControllerBase
     }
 
     [HttpGet("{id:Guid}")]
-    public async Task<IActionResult> Get([FromRoute] Guid id, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetUserById([FromRoute] Guid id, CancellationToken cancellationToken)
     {
         var getUserUseCase = _serviceProvider.GetRequiredService<GetUserUseCase>();
 
         var user = await getUserUseCase.GetUserAsync(id, cancellationToken);
         
         return Ok(user);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddUser([FromBody] AddUser user, CancellationToken cancellationToken)
+    {
+        var addUserUseCase = _serviceProvider.GetRequiredService<AddUserUseCase>();
+
+        var createdUser = await addUserUseCase.AddUserAsync(UserModelMapper.ToBusiness(user), cancellationToken);
+
+        return Created($"{createdUser.Id}", user);
     }
 }
