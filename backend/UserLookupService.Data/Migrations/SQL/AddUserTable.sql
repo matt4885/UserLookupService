@@ -11,19 +11,19 @@ GO
 BEGIN TRANSACTION;
 GO
 
-CREATE TABLE [Users] (
+CREATE TABLE [User] (
     [Id] uniqueidentifier NOT NULL,
-    [GivenName] nvarchar(max) NULL,
-    [FamilyName] nvarchar(max) NULL,
-    [Email] nvarchar(max) NULL,
+    [GivenName] nvarchar(50) NOT NULL,
+    [FamilyName] nvarchar(50) NOT NULL,
+    [Email] nvarchar(128) NOT NULL,
     [DateOfBirth] datetime2 NOT NULL,
-    [Address] nvarchar(max) NULL,
-    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+    [Address] nvarchar(95) NOT NULL,
+    CONSTRAINT [PK_User] PRIMARY KEY ([Id])
 );
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20220123182955_AddUserTable', N'6.0.1');
+VALUES (N'20220123190159_AddUserTable', N'6.0.1');
 GO
 
 COMMIT;
