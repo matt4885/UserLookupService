@@ -36,6 +36,6 @@ public class UserController : ControllerBase
 
         var createdUser = await addUserUseCase.AddUserAsync(UserModelMapper.ToBusiness(user), cancellationToken);
 
-        return Created($"{createdUser.Id}", user);
+        return Created($"{createdUser.Id}", createdUser);
     }
 }

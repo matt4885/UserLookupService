@@ -1,22 +1,30 @@
-﻿CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
-    migration_id character varying(150) NOT NULL,
-    product_version character varying(32) NOT NULL,
-    CONSTRAINT pk___ef_migrations_history PRIMARY KEY (migration_id)
+﻿IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+CREATE TABLE [Users] (
+    [Id] uniqueidentifier NOT NULL,
+    [GivenName] nvarchar(max) NULL,
+    [FamilyName] nvarchar(max) NULL,
+    [Email] nvarchar(max) NULL,
+    [DateOfBirth] datetime2 NOT NULL,
+    [Address] nvarchar(max) NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
 );
+GO
 
-START TRANSACTION;
-
-CREATE TABLE users (
-    id uuid NOT NULL,
-    given_name text NULL,
-    family_name text NULL,
-    email text NULL,
-    date_of_birth timestamp with time zone NOT NULL,
-    address text NULL,
-    CONSTRAINT pk_users PRIMARY KEY (id)
-);
-
-INSERT INTO "__EFMigrationsHistory" (migration_id, product_version)
-VALUES ('20220121011205_AddUserTable', '6.0.1');
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220123182955_AddUserTable', N'6.0.1');
+GO
 
 COMMIT;
+GO

@@ -12,4 +12,3 @@ public class MainContext : DbContext
     {
 
     }
-}

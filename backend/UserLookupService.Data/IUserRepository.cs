@@ -4,5 +4,5 @@ namespace UserLookupService.Data;
 
 public interface IUserRepository
 {
-    Task<User> AddAsync(UserLookupService.Abstractions.User user, CancellationToken cancellationToken);
+    Task<Abstractions.User> AddAsync(Abstractions.User user, CancellationToken cancellationToken);
 }

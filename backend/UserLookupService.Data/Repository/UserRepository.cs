@@ -2,13 +2,16 @@ namespace UserLookupService.Data;
 
 public class UserRepository : IUserRepository
 {
-    public Task<Abstractions.User> AddAsync(Abstractions.User user, CancellationToken cancellationToken)
+    private readonly MainContext _dbContext;
+    public UserRepository(MainContext dbContext)
     {
-        throw new NotImplementedException();
+        _dbContext = dbContext;
     }
 
-    Task<User> IUserRepository.AddAsync(Abstractions.User user, CancellationToken cancellationToken)
+    public async Task<Abstractions.User> AddAsync(Abstractions.User user, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        await _dbContext.Users.AddAsync(UserModelMapper.ToDatabase(user), cancellationToken);
+        await _dbContext.SaveChangesAsync(cancellationToken);
+        return user;
     }
 }

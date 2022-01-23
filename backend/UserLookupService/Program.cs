@@ -1,6 +1,6 @@
-using System.Text.Json;
 using UserLookupService.Domains;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using UserLookupService.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,9 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<MainContext>(o =>
-    o.UseNpgsql("Host=localhost;Database=users;Username=postgres;Password=password",
-        b => b.MigrationsAssembly("UserLookupService.Data"))
-    .UseSnakeCaseNamingConvention());
+    o.UseSqlServer(builder.Configuration.GetConnectionString("User"),
+        b => b.MigrationsAssembly("UserLookupService.Data")));
 
 
 builder.Services.AddControllers();
@@ -20,6 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserQuery, UserQueries>();
 builder.Services.AddScoped<GetUserUseCase>();
+builder.Services.AddScoped<AddUserUseCase>();
 
 var app = builder.Build();
 
