@@ -3,16 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserLookupService", "UserLookupService.csproj", "{DCA3CA93-7F3C-4999-9FC4-1BE961A3658B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserLookupService", "backend\UserLookupService\UserLookupService.csproj", "{DCA3CA93-7F3C-4999-9FC4-1BE961A3658B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - Solution Items", "{6FC6F8E4-65A6-4186-9869-A9D4B022D487}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{10B79885-90A9-4373-A16B-003D5559562E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Shared", "2 - Shared", "{DA9AF666-F533-4465-9E97-31885244718E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Data", "3 - Data", "{FE09DC75-29D7-4355-BD32-6433DA8D05B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserLookupService.Abstractions", "backend\UserLookupService.Abstractions\UserLookupService.Abstractions.csproj", "{00E1BBEC-4516-4043-9C6D-AC4B2CD4116E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLookupService.Data", "backend\UserLookupService.Data\UserLookupService.Data.csproj", "{1A8EB8EA-140D-485B-A85E-F3B33CD38D3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,12 +33,22 @@ Global
 		{DCA3CA93-7F3C-4999-9FC4-1BE961A3658B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCA3CA93-7F3C-4999-9FC4-1BE961A3658B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCA3CA93-7F3C-4999-9FC4-1BE961A3658B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E1BBEC-4516-4043-9C6D-AC4B2CD4116E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E1BBEC-4516-4043-9C6D-AC4B2CD4116E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E1BBEC-4516-4043-9C6D-AC4B2CD4116E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E1BBEC-4516-4043-9C6D-AC4B2CD4116E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A8EB8EA-140D-485B-A85E-F3B33CD38D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A8EB8EA-140D-485B-A85E-F3B33CD38D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A8EB8EA-140D-485B-A85E-F3B33CD38D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A8EB8EA-140D-485B-A85E-F3B33CD38D3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DCA3CA93-7F3C-4999-9FC4-1BE961A3658B} = {10B79885-90A9-4373-A16B-003D5559562E}
+		{00E1BBEC-4516-4043-9C6D-AC4B2CD4116E} = {DA9AF666-F533-4465-9E97-31885244718E}
+		{1A8EB8EA-140D-485B-A85E-F3B33CD38D3E} = {FE09DC75-29D7-4355-BD32-6433DA8D05B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF9D936B-9EAC-44A9-9B0F-CEA19216C91A}
