@@ -9,6 +9,8 @@ public static class UserModelMapper
         return new Abstractions.User
         {
             Address = user.Address,
+            State = user.State,
+            ZipCode = user.ZipCode,
             DateOfBirth = user.DateOfBirth,
             Email = user.Email,
             FamilyName = user.FamilyName,
@@ -23,6 +25,8 @@ public static class UserModelMapper
         {
             Id = Guid.NewGuid(),
             Address = user.Address,
+            State = user.State,
+            ZipCode =user.ZipCode,
             DateOfBirth = user.DateOfBirth,
             Email = user.Email,
             FamilyName = user.FamilyName,
@@ -35,6 +39,8 @@ public static class UserModelMapper
         return new Data.User
         {
             Address = user.Address,
+            State = user.State,
+            ZipCode= user.ZipCode,
             DateOfBirth = user.DateOfBirth,
             Email = user.Email,
             FamilyName = user.FamilyName,
