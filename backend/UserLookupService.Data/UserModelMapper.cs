@@ -48,4 +48,21 @@ public static class UserModelMapper
             Id = user.Id ?? Guid.Empty
         };
     }
+
+    /// <summary>
+    /// converts List<Data.User> to List<Abstractions.User>
+    /// </summary>
+    /// <param name="users"></param>
+    /// <returns></returns>
+    public static IList<Abstractions.User> ToBusiness(List<Data.User> users)
+    {
+        var abstractionUsers = new List<Abstractions.User>();
+
+        foreach (var user in users)
+        {
+            abstractionUsers.Add(ToBusiness(user));
+        }
+
+        return abstractionUsers;
+    }
 }

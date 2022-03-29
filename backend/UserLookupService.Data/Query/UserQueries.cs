@@ -33,11 +33,35 @@ public class UserQueries : IUserQuery
     /// </summary>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<IList<User>> GetUsersAsync(CancellationToken cancellationToken)
+    public async Task<IList<Abstractions.User>> GetUsersAsync(CancellationToken cancellationToken)
     {
         var users = await _dbContext.Users
             .ToListAsync(cancellationToken);
 
-        return users;
+        return UserModelMapper.ToBusiness(users);
     }
+
+    /// <summary>
+    /// Get all users by zipCode
+    /// </summary>
+    /// <param name="zipCode">zipCode to filter</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<IList<Abstractions.User>> GetUsersAsync(string zipCode, CancellationToken cancellationToken)
+    {
+        var users = await _dbContext.Users
+            .Where(u => u.ZipCode == zipCode)
+            .ToListAsync(cancellationToken);
+
+        return UserModelMapper.ToBusiness(users);
+    }
+
+
+    Task<IList<Abstractions.User>> IUserQuery.GetUsersAsync(Abstractions.State state, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
 }
+
+// set zip code 
