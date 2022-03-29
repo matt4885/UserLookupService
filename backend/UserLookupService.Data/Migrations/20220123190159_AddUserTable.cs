@@ -18,7 +18,10 @@ namespace UserLookupService.Data.Migrations
                     FamilyName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(95)", maxLength: 95, nullable: false)
+                    Address = table.Column<string>(type: "nvarchar(95)", maxLength: 95, nullable: false),
+                    State = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    ZipCode = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false)
+                   
                 },
                 constraints: table =>
                 {
