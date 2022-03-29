@@ -25,6 +25,12 @@ public class MainContext : DbContext
         modelBuilder.Entity<User>().Property(u => u.Address)
             .IsRequired()
             .HasMaxLength(95);
+        modelBuilder.Entity<User>().Property( u => u.State)
+            .IsRequired()
+            .HasMaxLength(15);
+        modelBuilder.Entity<User>().Property(u => u.ZipCode)
+            .IsRequired()
+            .HasMaxLength(12);
         modelBuilder.Entity<User>().Property(u => u.GivenName)
             .IsRequired()
             .HasMaxLength(50);
