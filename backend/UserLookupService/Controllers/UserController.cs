@@ -38,4 +38,27 @@ public class UserController : ControllerBase
 
         return Created($"{createdUser.Id}", createdUser);
     }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteUserAsync([FromRoute] Guid id, CancellationToken cancellationToken = default)
+    {
+        var deleteUserUseCase = _serviceProvider.GetRequiredService<DeleteUserUseCase>();
+
+        await deleteUserUseCase.DeleteUserAsync(id, cancellationToken);
+
+        return NoContent();
+
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateUser([FromBody] Abstractions.User user, CancellationToken cancellationToken)
+    {
+        
+        var updateUserUseCase = _serviceProvider.GetRequiredService<UpdateUserUseCase>();
+
+        var updatedUser = await updateUserUseCase.UpdateUserAsync(user, cancellationToken);
+
+        return Ok();
+    }
 }
+

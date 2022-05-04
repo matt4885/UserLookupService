@@ -45,7 +45,7 @@ public static class UserModelMapper
             Email = user.Email,
             FamilyName = user.FamilyName,
             GivenName = user.GivenName,
-            Id = user.Id ?? Guid.Empty
+            Id = user.Id  
         };
     }
 
