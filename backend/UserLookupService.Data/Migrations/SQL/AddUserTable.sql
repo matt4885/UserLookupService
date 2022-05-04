@@ -18,6 +18,8 @@ CREATE TABLE [User] (
     [Email] nvarchar(128) NOT NULL,
     [DateOfBirth] datetime2 NOT NULL,
     [Address] nvarchar(95) NOT NULL,
+    [State] nvarchar(15) NOT NULL,
+    [ZipCode] nvarchar(12) NOT NULL,
     CONSTRAINT [PK_User] PRIMARY KEY ([Id])
 );
 GO
